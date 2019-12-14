@@ -32,8 +32,15 @@ def handleLine(l):
                 immflags[i-1]='0'
             elif tokens[i][0] == 'I':
                 immflags[i-1]='1'
-            elif tokens[i][0] == 'I':
+            elif tokens[i][0] == 'R':
                 immflags[i-1]='2'
+
+            elif tokens[i][0] == '@':
+                immflags[i-1]='0'
+            elif tokens[i][0] == '~':
+                immflags[i-1]='2'
+            else:
+                immflags[i-1]='1'
             addresses.append(int(tokens[i][1:]))
     out=[int(immflags[2]+immflags[1]+immflags[0]+str(opcodes.index(tokens[0])))]
     for a in addresses:
